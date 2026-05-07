@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <title>AegisVision Fall Alert Center</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/x-icon" href="./img/aegisvision.ico">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+  <main class="app-shell dashboard-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">AegisVision Alert Center</p>
+        <h1>Fall Alert Center</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="backendStatus" class="status-pill offline">Offline</span>
+        <a class="button ghost" href="./camera.html">Open Camera Client</a>
+        <a class="button ghost" href="./screen.html">Open Screen Capture Client</a>
+      </div>
+    </header>
+
+    <section class="metrics-grid">
+      <article class="metric-card">
+        <span>Total Fall Alerts</span>
+        <strong id="totalAlerts">0</strong>
+      </article>
+      <article class="metric-card alert-metric">
+        <span>Today's Alerts</span>
+        <strong id="todayAlerts">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>Latest Alert Time</span>
+        <strong id="latestAlertTime">--</strong>
+      </article>
+      <article class="metric-card">
+        <span>API Base URL</span>
+        <input id="apiBaseUrlInput" class="inline-input" type="url" aria-label="API Base URL">
+      </article>
+    </section>
+
+    <section class="toolbar">
+      <button id="saveApiUrlBtn" class="button primary">Save API URL</button>
+      <button id="refreshBtn" class="button">Refresh Alerts</button>
+      <button id="requestNotifyBtn" class="button">Enable Notifications</button>
+      <button id="testNotifyBtn" class="button subtle">Test Notification</button>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <h2>Fall Alert Events</h2>
+        <p>Only confirmed fall events are shown here. Normal, No Person, and Error frames are not listed.</p>
+      </div>
+      <div id="alertList" class="alert-list empty-state">No fall alerts recorded yet.</div>
+    </section>
+  </main>
+
+  <div id="eventModal" class="modal event-modal" role="dialog" aria-modal="true" aria-label="Fall alert details">
+    <button id="closeModalBtn" class="modal-close" aria-label="Close alert details">x</button>
+    <div class="event-detail">
+      <div>
+        <h2 id="modalTitle">Fall Alert</h2>
+        <p id="modalMeta"></p>
+        <img id="modalSnapshot" src="" alt="Fall alert snapshot">
+      </div>
+      <div>
+        <h3>Event Debug</h3>
+        <pre id="modalDebug"></pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/notification.js"></script>
+  <script src="./js/websocket.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

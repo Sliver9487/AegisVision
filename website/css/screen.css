@@ -1,0 +1,167 @@
+.screen-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 18px;
+}
+
+.control-panel,
+.preview-panel {
+  padding: 18px;
+}
+
+.panel-heading {
+  margin-bottom: 16px;
+}
+
+.panel-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.control-panel {
+  display: grid;
+  gap: 13px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-row input {
+  width: auto;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.button-grid .button:first-child,
+.button-grid .button:last-child {
+  grid-column: 1 / -1;
+}
+
+.button-grid .button {
+  width: 100%;
+}
+
+.preview-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.preview-card h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0d1724;
+  aspect-ratio: 16 / 9;
+}
+
+.ai-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0d1724;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0d1724;
+}
+
+video.hidden-feed {
+  opacity: 0;
+}
+
+video.preview-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #d9e8f5;
+  font-weight: 800;
+  text-align: center;
+  padding: 20px;
+}
+
+.video-placeholder.visible {
+  display: flex;
+}
+
+.status-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.status-board article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  padding: 13px;
+}
+
+.status-board span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.status-board strong {
+  display: block;
+  font-size: 17px;
+  word-break: break-word;
+}
+
+.error-message {
+  min-height: 22px;
+  margin: 0;
+  color: var(--red);
+  font-weight: 800;
+}
+
+@media (max-width: 960px) {
+  .screen-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .status-board,
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
+}

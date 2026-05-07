@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007bff">
+  <title>AegisVision Screen Capture Client</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/x-icon" href="./img/aegisvision.ico">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/screen.css">
+</head>
+<body>
+  <main class="app-shell screen-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">AegisVision Display Node</p>
+        <h1>AegisVision Screen Capture Client</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="connectionStatus" class="status-pill offline">Idle</span>
+        <a class="button ghost" href="./main.html">Dashboard</a>
+        <a class="button ghost" href="./camera.html">Camera Client</a>
+      </div>
+    </header>
+
+    <section class="screen-layout">
+      <aside class="control-panel">
+        <div class="panel-heading">
+          <h2>Display Capture</h2>
+          <p id="activeDeviceLabel">Device: Desktop-01</p>
+        </div>
+
+        <label>Device ID
+          <input id="deviceIdInput" type="text" placeholder="Desktop-01">
+        </label>
+        <label>API Base URL
+          <input id="apiBaseUrlInput" type="url" placeholder="http://127.0.0.1:8000">
+        </label>
+        <label>Capture Mode
+          <input id="captureModeInput" type="text" value="Screen / Window / Browser Tab" readonly>
+        </label>
+        <label>Frame Interval
+          <select id="intervalSelect">
+            <option value="100">100ms</option>
+            <option value="200">200ms</option>
+            <option value="300">300ms</option>
+            <option value="500">500ms</option>
+            <option value="1000">1000ms</option>
+          </select>
+        </label>
+        <label>JPEG Quality
+          <select id="qualitySelect">
+            <option value="0.5">0.5</option>
+            <option value="0.7">0.7</option>
+            <option value="0.85">0.85</option>
+          </select>
+        </label>
+        <label>Resolution
+          <select id="resolutionSelect">
+            <option value="original">Original</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="320p">320p</option>
+          </select>
+        </label>
+
+        <label class="toggle-row">
+          <input id="showPreviewToggle" type="checkbox">
+          <span>Show Preview</span>
+        </label>
+        <label class="toggle-row">
+          <input id="highSensitivityToggle" type="checkbox">
+          <span>High Sensitivity Mode</span>
+        </label>
+
+        <div class="button-grid">
+          <button id="startCaptureBtn" class="button primary">Start Screen Capture</button>
+          <button id="stopCaptureBtn" class="button">Stop Screen Capture</button>
+          <button id="startDetectionBtn" class="button danger">Start Detection</button>
+          <button id="pauseDetectionBtn" class="button">Pause Detection</button>
+          <button id="saveSettingsBtn" class="button subtle">Save Settings</button>
+        </div>
+      </aside>
+
+      <section class="preview-panel">
+        <div class="preview-grid">
+          <section class="preview-card">
+            <h3>Source Preview</h3>
+            <div class="video-frame">
+              <video id="video" autoplay muted playsinline></video>
+              <canvas id="canvas" hidden></canvas>
+              <div id="videoPlaceholder" class="video-placeholder">Choose a screen, window, or browser tab to begin.</div>
+            </div>
+          </section>
+          <section class="preview-card">
+            <h3>AI Detection Preview</h3>
+            <div class="video-frame">
+              <img id="aiPreview" class="ai-preview" alt="AI processed preview">
+              <div id="aiPreviewPlaceholder" class="video-placeholder visible">AI processed frames will appear here.</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="status-board">
+          <article><span>Capture Status</span><strong id="captureStatus">idle</strong></article>
+          <article><span>Detection Status</span><strong id="detectionStatus">idle</strong></article>
+          <article><span>AI Result</span><strong id="aiResult">No Person</strong></article>
+          <article><span>Last Detection</span><strong id="lastDetectionTime">--</strong></article>
+          <article><span>Latency</span><strong id="latency">--</strong></article>
+          <article><span>Sent Frames</span><strong id="sentFrames">0</strong></article>
+          <article><span>Skipped Frames</span><strong id="skippedFrames">0</strong></article>
+          <article><span>Success</span><strong id="successCount">0</strong></article>
+          <article><span>Failed</span><strong id="failedCount">0</strong></article>
+          <article><span>Average Response</span><strong id="avgResponseTime">--</strong></article>
+          <article><span>Last Successful Frame</span><strong id="lastSuccessfulFrameTime">--</strong></article>
+        </div>
+
+        <p id="errorMessage" class="error-message" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/screen.js"></script>
+</body>
+</html>

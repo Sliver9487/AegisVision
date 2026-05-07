@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Models
+models/*.pt
+models/*.onnx
+models/*.engine
+models/*.torchscript
+
+# Runtime outputs
+outputs/
+runs/
+*.mp4
+*.avi
+*.mov
+
+# Fall records
+website/fall_records/images/*.jpg
+website/fall_records/images/*.jpeg
+website/fall_records/images/*.png
+website/fall_records/videos/
+website/fall_records/videos/*.mp4
+website/fall_records/log.json
+
+# Cache / browser / logs
+.cache/
+*.log
+logs/
+
+# Node files if accidentally created
+node_modules/
+package-lock.json
+
+!website/fall_records/.gitkeep
+!website/fall_records/images/.gitkeep
+!models/.gitkeep
+!samples/.gitkeep

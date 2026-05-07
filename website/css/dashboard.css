@@ -1,0 +1,146 @@
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  padding: 18px;
+}
+
+.metric-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 24px;
+}
+
+.alert-metric strong {
+  color: var(--red);
+}
+
+.inline-input {
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+.toolbar {
+  margin: 16px 0 8px;
+}
+
+.alert-list {
+  display: grid;
+  gap: 14px;
+}
+
+.alert-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.alert-snapshot {
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  object-fit: cover;
+  background: #dfe7ee;
+}
+
+.alert-body {
+  padding: 16px 16px 16px 0;
+}
+
+.alert-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.alert-title-row h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.alert-body p {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 10px 0;
+}
+
+.alert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.alert-actions .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.event-modal {
+  align-items: center;
+}
+
+.event-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: min(1120px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 20px;
+}
+
+.event-detail img {
+  width: 100%;
+  border-radius: var(--radius);
+  background: #0d1724;
+}
+
+.event-detail pre {
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  padding: 12px;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alert-card,
+  .event-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .alert-body {
+    padding: 0 16px 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
