@@ -4,6 +4,5 @@ ultralytics
 opencv-python
 numpy
 pydantic
-python-multipart
 torch
 torchvision
