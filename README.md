@@ -17,7 +17,6 @@ The system does **not** save continuous video. It only saves one processed snaps
 - AI preview with skeletons, bounding boxes, and detection status
 - Browser notification when a fall alert is triggered
 - Snapshot-only storage for better privacy
-- Offline video demo script for competition demonstrations
 - CPU support with optional NVIDIA GPU acceleration
 
 ## How It Works
@@ -148,13 +147,6 @@ Show a realtime preview while processing:
 python scripts/video_demo.py --input samples/fall.mp4 --output outputs/fall_result.mp4 --model models/yolov8m-pose.pt --show
 ```
 
-## Privacy Design
-
-- Realtime video is not continuously saved.
-- The system does not record 30-second videos.
-- Only confirmed fall snapshots and event information are stored.
-- Users should avoid selecting private screens during screen capture tests.
-
 ## Troubleshooting
 
 - If the backend fails to start, check that dependencies are installed.
@@ -162,11 +154,3 @@ python scripts/video_demo.py --input samples/fall.mp4 --output outputs/fall_resu
 - If detection is slow, use a smaller model or an NVIDIA GPU with CUDA-enabled PyTorch.
 - If Screen Capture cannot start, use `localhost` or HTTPS and start it with a manual button click.
 - If the Dashboard is empty, no confirmed fall alert has been triggered yet.
-
-## Future Improvements
-
-- Add user login for deployed systems
-- Store alerts in a database
-- Add more test videos and accuracy evaluation
-- Add location labels for multiple cameras
-- Improve fall detection for different environments
